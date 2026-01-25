@@ -1,4 +1,5 @@
 @use './variables' as vars;
+@use './mixins' as mixins;
 
 *,
 *::before,
@@ -12,4 +13,31 @@ body {
   font-family: vars.$font-primary;
   background-color: vars.$color-background;
   color: vars.$color-text;
+  @include mixins.flex-center;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
