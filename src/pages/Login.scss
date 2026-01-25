@@ -1,0 +1,104 @@
+@use '../styles/variables' as vars;
+@use '../styles/mixins' as mixins;
+
+
+.login-page {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 1440px;
+  flex-direction: row;
+
+  @include mixins.mobile {
+    flex-direction: column;
+  }
+}
+
+.login-container, .login-image {
+    @include mixins.flex-center;
+    flex-direction: column;
+}
+
+.login-image {
+    flex-basis: 51%;
+    position: relative;
+}
+
+.login-image .login-logo {
+    position: absolute;
+    top: 4.4vw;
+    left: 4.2vw;
+}
+
+.login-image .login-img {
+    width: 90%;
+}
+
+.login-container {
+    flex-basis: 49%;
+    background-color: #FFFFFF;
+    box-shadow: 0 15px 90px 0 #00000008;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.login-form h4 {
+    color: vars.$color-primary;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -1.6px;
+}
+
+.login-form p {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 400;
+    color: vars.$color-text;
+
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.input-container input {
+    height: 50px;
+    width: 447px;
+    border: 2px solid #545F7D26;
+    border-radius: 5px;
+    padding: 0px 16px;
+}
+
+.input-container input::placeholder {
+    color: vars.$color-text;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.input-container a {
+    color: vars.$color-secondary;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+}
+
+.login-btn {
+    height: 50px;
+    width: 447px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    color: #FFFFFF;
+    background-color: vars.$color-secondary;
+    border-radius: 8px;
+}
