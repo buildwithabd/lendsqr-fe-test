@@ -1,6 +1,11 @@
 @use './variables' as vars;
 @use './mixins' as mixins;
 
+@import "@fontsource/work-sans";
+@import "@fontsource/work-sans/300.css"; 
+@import "@fontsource/work-sans/500.css";
+@import "@fontsource/work-sans/700.css"; 
+
 *,
 *::before,
 *::after {
