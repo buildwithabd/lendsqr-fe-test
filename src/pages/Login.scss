@@ -10,7 +10,7 @@
   max-width: 1440px;
   flex-direction: row;
 
-  @include mixins.mobile {
+  @include mixins.md {
     flex-direction: column;
   }
 }
@@ -33,7 +33,7 @@
 
 .login-image .login-img {
     width: 85%;
-    @include mixins.mobile {
+    @include mixins.md {
         display: none;
     }
 }
@@ -43,7 +43,7 @@
     background-color: #FFFFFF;
     box-shadow: 0 15px 90px 0 #00000008;
 
-    @include mixins.mobile {
+    @include mixins.md {
         min-height: 100vh;
     }
 }
