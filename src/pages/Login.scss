@@ -32,13 +32,20 @@
 }
 
 .login-image .login-img {
-    width: 90%;
+    width: 85%;
+    @include mixins.mobile {
+        display: none;
+    }
 }
 
 .login-container {
     flex-basis: 49%;
     background-color: #FFFFFF;
     box-shadow: 0 15px 90px 0 #00000008;
+
+    @include mixins.mobile {
+        min-height: 100vh;
+    }
 }
 
 .login-form {
@@ -71,10 +78,15 @@
 
 .input-container input {
     height: 50px;
-    width: 447px;
+    width: clamp(350px, 32vw, 447px);
     border: 2px solid #545F7D26;
     border-radius: 5px;
     padding: 0px 16px;
+}
+
+.input-container input:focus {
+    border-color: vars.$color-secondary;
+    outline: none;
 }
 
 .input-container input::placeholder {
@@ -93,7 +105,7 @@
 
 .login-btn {
     height: 50px;
-    width: 447px;
+    width: clamp(350px, 32vw, 447px);
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
