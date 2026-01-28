@@ -1,4 +1,4 @@
-import './Login.scss'
+import './Login.scss';
 import Logo from '../assets/logo.svg';
 import LoginImg from '../assets/pablo-sign-in.svg';
 
@@ -16,8 +16,8 @@ const Login = () => {
                         <p>Enter details to login.</p>
                     </div>
                     <div className="input-container">
-                        <input placeholder='Email' />
-                        <input placeholder='Password' />
+                        <input type="email" id="emailAddress" name="email" placeholder='Email' required />
+                        <input type="password" id="userPassword" name="userPassword" placeholder='Password' />
                         <a href="">Forgot password?</a>
                     </div>
                     <button className='login-btn'>Log In</button>
