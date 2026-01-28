@@ -5,4 +5,8 @@ $color-background: #ffffff;
 
 $font-primary: 'Work Sans', sans-serif;
 
-$breakpoint-mobile: 768px;
+$breakpoint-xs: 375px;   // Small phones
+$breakpoint-sm: 425px;   // Large phones
+$breakpoint-md: 768px;   // Tablets
+$breakpoint-lg: 1024px;  // Desktop
+$breakpoint-xl: 1440px;  // Large desktop
