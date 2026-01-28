@@ -1,5 +1,5 @@
-@use '../styles/variables' as vars;
-@use '../styles/mixins' as mixins;
+@import '../styles/variables';
+@import '../styles/mixins';
 
 
 .login-page {
@@ -10,13 +10,13 @@
   max-width: 1440px;
   flex-direction: row;
 
-  @include mixins.md {
+  @include md {
     flex-direction: column;
   }
 }
 
 .login-container, .login-image {
-    @include mixins.flex-center;
+    @include flex-center;
     flex-direction: column;
 }
 
@@ -33,17 +33,19 @@
 
 .login-image .login-img {
     width: 85%;
-    @include mixins.md {
+    @include md {
         display: none;
     }
 }
 
 .login-container {
+    position: relative;
+    font-family: $font-secondary;
     flex-basis: 49%;
     background-color: #FFFFFF;
     box-shadow: 0 15px 90px 0 #00000008;
 
-    @include mixins.md {
+    @include md {
         min-height: 100vh;
     }
 }
@@ -55,7 +57,7 @@
 }
 
 .login-form h4 {
-    color: vars.$color-primary;
+    color: $color-primary;
     font-size: 40px;
     font-weight: 700;
     letter-spacing: -1.6px;
@@ -66,7 +68,7 @@
     margin-bottom: 30px;
     font-size: 20px;
     font-weight: 400;
-    color: vars.$color-text;
+    color: $color-text;
 
 }
 
@@ -79,7 +81,7 @@
 .input-container input, .login-btn {
     height: 50px;
     width: clamp(350px, 32vw, 447px);
-    @include mixins.sm {
+    @include sm {
         width: 80vw
     }
 }
@@ -91,18 +93,18 @@
 }
 
 .input-container input:focus {
-    border-color: vars.$color-secondary;
+    border-color: $color-secondary;
     outline: none;
 }
 
 .input-container input::placeholder {
-    color: vars.$color-text;
+    color: $color-text;
     font-size: 14px;
     font-weight: 400;
 }
 
 .input-container a {
-    color: vars.$color-secondary;
+    color: $color-secondary;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
@@ -115,6 +117,6 @@
     font-weight: 600;
     letter-spacing: 1.4px;
     color: #FFFFFF;
-    background-color: vars.$color-secondary;
+    background-color: $color-secondary;
     border-radius: 8px;
 }

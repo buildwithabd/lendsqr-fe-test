@@ -1,11 +1,10 @@
-@use './variables' as vars;
-@use './mixins' as mixins;
+@import "./mixins";
+@import "./variables";
 
 @import "@fontsource/work-sans";
 @import "@fontsource/work-sans/300.css"; 
 @import "@fontsource/work-sans/500.css";
 @import "@fontsource/work-sans/700.css"; 
-
 *,
 *::before,
 *::after {
@@ -15,10 +14,10 @@
 }
 
 body {
-  font-family: vars.$font-primary;
-  background-color: vars.$color-background;
-  color: vars.$color-text;
-  @include mixins.flex-center;
+  font-family: $font-primary;
+  background-color: $color-background;
+  color: $color-text;
+  @include flex-center;
   min-height: 100vh;
   width: 100vw;
 }
