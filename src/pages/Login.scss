@@ -78,7 +78,8 @@
     gap: 24px;
 }
 
-.input-container input, .login-btn {
+.input-container input, .login-btn, .password-wrapper {
+    font-family: $font-secondary;
     height: 50px;
     width: clamp(350px, 32vw, 447px);
     @include sm {
@@ -86,9 +87,33 @@
     }
 }
 
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 19px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $color-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
 .input-container input {
     border: 2px solid #545F7D26;
     border-radius: 5px;
+    font-size: 16px;
     padding: 0px 16px;
 }
 
@@ -99,6 +124,7 @@
 
 .input-container input::placeholder {
     color: $color-text;
+    opacity: 60%;
     font-size: 14px;
     font-weight: 400;
 }
