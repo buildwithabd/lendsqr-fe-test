@@ -66,6 +66,7 @@ const Layout = () => (
                         <img src="/layouts/sign-out.svg" alt="sign-out" />
                         <h4>Logout</h4>
                     </div>
+                    <p>v1.2.0</p>
                 </div>
             </aside>
             <main>

@@ -117,13 +117,14 @@ aside {
     gap: 41px;
     padding-top: 39px;
     width: 283px;
-    overflow-y: auto; // ✅ sidebar scroll
+    overflow-y: auto;
     overflow-x: hidden;
+    box-shadow: 0 5px 20px 0 #0000000A;
 }
 
 aside::-webkit-scrollbar,
 main::-webkit-scrollbar {
-  width: 6px;
+  width: 0;
 }
 
 aside::-webkit-scrollbar-thumb,
@@ -169,6 +170,11 @@ aside .nav-title {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.nav-footer p {
+    margin-top: 40px;
+    font-size: 12px;
 }
 
 main {
