@@ -4,7 +4,7 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import Users from './pages/Users'
 import UserDetails from './pages/UserDetails'
-import Layout from './components/Layout'
+import Layout from './components/layout/Layout'
 
 function App() {
 
