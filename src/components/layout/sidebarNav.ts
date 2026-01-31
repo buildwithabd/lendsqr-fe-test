@@ -37,7 +37,7 @@ export const sidebarNav: NavSection[] = [
         icon: '/layouts/bank.svg',
         path: '/savings-products',
       },
-      { label: 'Fees and Charges', icon: '/layouts/coin-solid.svg', path: '/fees' },
+      { label: 'Fees and Charges', icon: '/layouts/coins-solid.svg', path: '/fees' },
       { label: 'Transactions', icon: '/layouts/transactions.svg', path: '/transactions' },
       { label: 'Services', icon: '/layouts/galaxy.svg', path: '/services' },
       { label: 'Service Account', icon: '/layouts/user-cog.svg', path: '/service-account' },
