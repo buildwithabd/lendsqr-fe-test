@@ -1,4 +1,4 @@
-@import '../styles/variables';
+@import '../../styles/variables';
 
 .layout {
     min-height: 100vh;
@@ -16,6 +16,7 @@ header {
     top: 0;
     z-index: 100;
     padding: 0 clamp(1rem, 2.08vw, 30px);
+    box-shadow: 3px 0 20px 0 #0000000A;
 }
 
 .header-left {
@@ -58,6 +59,9 @@ header {
 
 .search-icon {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 56px;
     height: 40px;
     background-color: $color-secondary;
@@ -65,4 +69,66 @@ header {
     right: 0;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    cursor: pointer;
+}
+
+.search-icon img {
+    width: 14px;
+    height: 14px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.header-right .docs {
+    color: $font-primary;
+    text-decoration: underline;
+    text-underline-offset: 1px;
+    text-decoration-thickness: 0;
+    margin-right: 17px;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+    padding-top: 39px;
+    width: 283px;
+}
+
+aside div.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 30px;
+    background-color: aqua;
+    height: 40px;
+}
+
+aside h4 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.so-container {
+    margin-bottom: 11px;
 }
