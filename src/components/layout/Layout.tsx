@@ -6,6 +6,7 @@ import SearchIcon from '../../assets/search-icon.svg';
 import NotificationIcon from '../../assets/notification-icon.svg';
 import Avatar from '../../assets/avatar.svg';
 import DropdownIcon from '../../assets/dropdown-icon.svg';
+import { sidebarNav } from "./SidebarNav";
 
 
 const Layout = () => (
@@ -45,6 +46,26 @@ const Layout = () => (
                 <div className="nav-link dashboard">
                     <img src="/layouts/home.svg" alt="dashboard" />
                     <h4>Dashboard</h4>
+                </div>
+
+                {sidebarNav.map((section) => (
+                    <div key={section.title} className="nav-section">
+                        <p className="nav-title">{section.title}</p>
+
+                        {section.items.map((item) => (
+                        <div key={item.label} className="nav-link">
+                            <img src={item.icon} alt={item.label} />
+                            <h4>{item.label}</h4>
+                        </div>
+                        ))}
+                    </div>
+                ))}
+
+                <div className="nav-footer">
+                    <div className="logout">
+                        <img src="/layouts/sign-out.svg" alt="sign-out" />
+                        <h4>Logout</h4>
+                    </div>
                 </div>
             </aside>
             <main>

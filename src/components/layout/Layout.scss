@@ -1,9 +1,12 @@
 @import '../../styles/variables';
 
 .layout {
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
     font-family: $font-primary;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 header {
@@ -105,6 +108,7 @@ header {
 .content {
   display: flex;
   flex: 1;
+  overflow: hidden;
 }
 
 aside {
@@ -113,14 +117,26 @@ aside {
     gap: 41px;
     padding-top: 39px;
     width: 283px;
+    overflow-y: auto; // ✅ sidebar scroll
+    overflow-x: hidden;
 }
 
-aside div.nav-link {
+aside::-webkit-scrollbar,
+main::-webkit-scrollbar {
+  width: 6px;
+}
+
+aside::-webkit-scrollbar-thumb,
+main::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+aside .nav-link {
     display: flex;
     align-items: center;
     gap: 10px;
     padding-left: 30px;
-    background-color: aqua;
     height: 40px;
 }
 
@@ -131,4 +147,32 @@ aside h4 {
 
 .so-container {
     margin-bottom: 11px;
+}
+
+aside .nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+aside .nav-title {
+    padding-left: 30px;
+}
+
+.nav-footer {
+    margin-top: 60px;
+    padding: 20px 0 19px 29px;
+    border-top: 1px solid #213F7D1a;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
 }
