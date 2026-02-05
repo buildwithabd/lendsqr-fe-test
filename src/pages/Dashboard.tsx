@@ -1,4 +1,5 @@
 import './Dashboard.scss';
+import UsersTable from '../components/UsersTable';
 
 const Dashboard = () => {
     return (
@@ -42,6 +43,7 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+            <UsersTable />
         </div>
     )
 }
