@@ -180,5 +180,5 @@ aside .nav-title {
 main {
   flex: 1;
   overflow-y: auto;
-  padding: 24px;
+  padding: clamp(1rem, 4.17vw, 60px);
 }
