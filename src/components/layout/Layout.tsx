@@ -6,7 +6,7 @@ import SearchIcon from '../../assets/search-icon.svg';
 import NotificationIcon from '../../assets/notification-icon.svg';
 import Avatar from '../../assets/avatar.svg';
 import DropdownIcon from '../../assets/dropdown-icon.svg';
-import { sidebarNav } from "./sidebarNav";
+import { sidebarNav } from "../../data/sidebarNav.ts";
 
 
 const Layout = () => (
