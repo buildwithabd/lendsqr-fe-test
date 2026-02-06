@@ -111,34 +111,30 @@ const UsersTable: React.FC = () => {
   // Generate page numbers for pagination
   const getPageNumbers = (): (number | string)[] => {
     const pages: (number | string)[] = [];
-    const maxVisible = 5; // Maximum number of page buttons to show
+    const delta = 2;
 
-    if (totalPages <= maxVisible) {
-      // Show all pages if total is less than max
+    if (totalPages <= 7) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      // Always show first page
       pages.push(1);
 
-      if (currentPage > 3) {
+      const rangeStart = Math.max(2, currentPage - delta);
+      const rangeEnd = Math.min(totalPages - 1, currentPage + delta);
+
+      if (rangeStart > 2) {
         pages.push('...');
       }
 
-      // Show pages around current page
-      const start = Math.max(2, currentPage - 1);
-      const end = Math.min(totalPages - 1, currentPage + 1);
-
-      for (let i = start; i <= end; i++) {
+      for (let i = rangeStart; i <= rangeEnd; i++) {
         pages.push(i);
       }
 
-      if (currentPage < totalPages - 2) {
+      if (rangeEnd < totalPages - 1) {
         pages.push('...');
       }
 
-      // Always show last page
       pages.push(totalPages);
     }
 
