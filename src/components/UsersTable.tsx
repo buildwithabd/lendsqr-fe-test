@@ -153,9 +153,6 @@ const UsersTable: React.FC = () => {
     return <div className="error">{error}</div>;
   }
 
-  const startIndex = (currentPage - 1) * usersPerPage + 1;
-  const endIndex = Math.min(currentPage * usersPerPage, totalUsers);
-
   return (
     <div>
       <div className="table-container">
@@ -264,7 +261,7 @@ const UsersTable: React.FC = () => {
             </select>
           </div>
           <span>
-            out of {totalUsers} ({startIndex}-{endIndex})
+            out of {totalUsers}
           </span>
         </div>
 
