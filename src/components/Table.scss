@@ -95,7 +95,6 @@
   }
 }
 
-// Status badges with specific colors
 .status {
   display: inline-flex;
   align-items: center;
@@ -107,25 +106,21 @@
   text-transform: capitalize;
   min-width: 96px;
   
-  // Active - Green
   &.active {
     background-color: rgba(57, 205, 98, 0.06);
     color: #39CD62;
   }
   
-  // Inactive - Gray
   &.inactive {
     background-color: rgba(84, 95, 125, 0.06);
     color: #545F7D;
   }
   
-  // Pending - Yellow/Orange
   &.pending {
     background-color: rgba(233, 178, 0, 0.06);
     color: #E9B200;
   }
   
-  // Blacklisted - Red
   &.blacklisted {
     background-color: rgba(228, 3, 59, 0.06);
     color: #E4033B;
@@ -149,7 +144,6 @@
   }
 }
 
-// Filter dropdown
 .filter-dropdown {
   position: absolute;
   top: 100%;
@@ -260,7 +254,6 @@
   }
 }
 
-// Responsive
 @include sm {
   .table-container {
     overflow-x: scroll;
@@ -298,9 +291,14 @@
   align-items: center;
   gap: 0.875rem;
   font-size: 14px;
+  font-weight: 400;
   color: $color-text;
   
   span {
+    font-weight: 400;
+  }
+
+  option {
     font-weight: 500;
   }
 }
@@ -323,7 +321,7 @@
     font-size: 14px;
     color: $color-primary;
     background-color: #FFFFFF;
-    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10L2 5L12 5L7 10Z' fill='%23213F7D'/%3E%3C/svg%3E");
+    background-image: url("/public/layouts//arrow-down.svg");
     background-repeat: no-repeat;
     background-position: right 8px center;
     appearance: none;
@@ -407,7 +405,6 @@
   padding: 0 4px;
 }
 
-// Responsive
 @include sm {
   .table-footer {
     flex-direction: column;
