@@ -1,10 +1,10 @@
-// UsersTable.tsx
 import { useState, useEffect } from 'react';
-import './Table.module.scss';
+import './Table.scss';
 import { mockApi } from '../services/mockApi';
 import type { User, UserFilters } from '../types/user.types';
 import FilterIcon from '../assets/filter-icon.svg';
 import MoreIcon from '../assets/more-icon.svg';
+import React from 'react';
 
 interface TableHeader {
   key: keyof UserFilters;
@@ -26,7 +26,8 @@ const UsersTable: React.FC = () => {
   });
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalUsers, setTotalUsers] = useState<number>(0);
-  const usersPerPage = 100;
+  const [usersPerPage, setUsersPerPage] = useState<number>(100);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   const headers: TableHeader[] = [
     { key: 'organization', label: 'Organization' },
@@ -40,7 +41,7 @@ const UsersTable: React.FC = () => {
   // Fetch users on component mount or page change
   useEffect(() => {
     fetchUsers();
-  }, [currentPage]);
+  }, [currentPage, usersPerPage]);
 
   const fetchUsers = async (): Promise<void> => {
     try {
@@ -48,6 +49,7 @@ const UsersTable: React.FC = () => {
       const response = await mockApi.getUsers(currentPage, usersPerPage);
       setUsers(response.data);
       setTotalUsers(response.total);
+      setTotalPages(response.totalPages);
       setError(null);
     } catch (err) {
       setError('Failed to load users');
@@ -95,6 +97,54 @@ const UsersTable: React.FC = () => {
     setFilters({ ...filters, [key]: value });
   };
 
+  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    setUsersPerPage(Number(e.target.value));
+    setCurrentPage(1); // Reset to first page
+  };
+
+  const handlePageChange = (page: number): void => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  // Generate page numbers for pagination
+  const getPageNumbers = (): (number | string)[] => {
+    const pages: (number | string)[] = [];
+    const maxVisible = 5; // Maximum number of page buttons to show
+
+    if (totalPages <= maxVisible) {
+      // Show all pages if total is less than max
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Always show first page
+      pages.push(1);
+
+      if (currentPage > 3) {
+        pages.push('...');
+      }
+
+      // Show pages around current page
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+
+      if (currentPage < totalPages - 2) {
+        pages.push('...');
+      }
+
+      // Always show last page
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
   if (loading && users.length === 0) {
     return <div className="loading">Loading users...</div>;
   }
@@ -102,6 +152,9 @@ const UsersTable: React.FC = () => {
   if (error) {
     return <div className="error">{error}</div>;
   }
+
+  const startIndex = (currentPage - 1) * usersPerPage + 1;
+  const endIndex = Math.min(currentPage * usersPerPage, totalUsers);
 
   return (
     <div>
@@ -196,11 +249,80 @@ const UsersTable: React.FC = () => {
         </table>
       </div>
 
+      {/* Pagination Footer */}
       <div className="table-footer">
-        <p>
-          Showing {(currentPage - 1) * usersPerPage + 1} to{' '}
-          {Math.min(currentPage * usersPerPage, totalUsers)} of {totalUsers} users
-        </p>
+        <div className="showing-info">
+          <span>
+            Showing
+          </span>
+          <div className="per-page-select">
+            <select value={usersPerPage} onChange={handlePerPageChange}>
+              <option value={10}>10</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
+          <span>
+            out of {totalUsers} ({startIndex}-{endIndex})
+          </span>
+        </div>
+
+        <div className="pagination">
+          {/* Previous Button */}
+          <button
+            className="pagination-arrow"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            aria-label="Previous page"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M9.3335 11.0833L5.25016 6.99996L9.3335 2.91663"
+                stroke="#213F7D"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+
+          {/* Page Numbers */}
+          {getPageNumbers().map((page, index) => (
+            <React.Fragment key={index}>
+              {page === '...' ? (
+                <span className="pagination-ellipsis">...</span>
+              ) : (
+                <button
+                  className={`pagination-btn ${
+                    currentPage === page ? 'active' : ''
+                  }`}
+                  onClick={() => handlePageChange(page as number)}
+                >
+                  {page}
+                </button>
+              )}
+            </React.Fragment>
+          ))}
+
+          {/* Next Button */}
+          <button
+            className="pagination-arrow"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            aria-label="Next page"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path
+                d="M4.6665 2.91663L8.74984 6.99996L4.6665 11.0833"
+                stroke="#213F7D"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );
